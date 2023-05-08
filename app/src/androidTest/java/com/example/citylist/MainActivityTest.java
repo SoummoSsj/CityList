@@ -75,5 +75,49 @@ public class MainActivityTest {
         onData(anything()).inAdapterView(withId(R.id.city_list)).atPosition(0).perform(click()); //Check the content on the list - no content in this case
         Espresso.pressBack(); //Back button
     }
+    @Test
+    public void lab3()
+    {
+        onView(withId(R.id.button_add)).perform(click());//add button to add city
+        onView(withId(R.id.editText_name)).perform(ViewActions.typeText("Edmonton"));//city name
+
+        onView(withId(R.id.show)).check(matches(isDisplayed()));
+        onView(withText("Edmonton")).check(matches(isDisplayed()));
+        onView(withId(R.id.back)).perform(click());
+        onView(withId(R.id.main)).check(matches(isDisplayed()));
+        Espresso.pressBack(); //back button
+
+    }
+    @Test
+    public void Itemclicktest()
+    {
+        onView(withId(R.id.button_add)).perform(click());//add button to add city
+        onView(withId(R.id.editText_name)).perform(ViewActions.typeText("Edmonton"));//city name
+        Espresso.pressBack();
+        onView(withId(R.id.button_confirm)).perform(click());
+
+        onView(withId(R.id.button_add)).perform(click());//add button to add city
+        onView(withId(R.id.editText_name)).perform(ViewActions.typeText("Dhaka"));//city name
+        Espresso.pressBack();
+        onView(withId(R.id.button_confirm)).perform(click());
+
+        onView(withId(R.id.button_add)).perform(click());//add button to add city
+        onView(withId(R.id.editText_name)).perform(ViewActions.typeText("Khulna"));//city name
+        Espresso.pressBack();
+        onView(withId(R.id.button_confirm)).perform(click());
+
+
+
+
+
+        onData(anything()).inAdapterView(withId(R.id.city_list)).atPosition(2).perform(click());//check content on the list- no oonten
+        onView(withId(R.id.show)).check(matches(isDisplayed()));
+        onView(withText("Khulna")).check(matches(isDisplayed()));
+        onView(withId(R.id.back)).perform(click());
+        onView(withId(R.id.main)).check(matches(isDisplayed()));
+
+
+    }
+
 
 }
